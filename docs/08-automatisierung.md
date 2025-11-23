@@ -39,6 +39,15 @@ Installiert automatisch:
 - Konfiguriert VirtualHost
 - Gibt IP-Adresse aus
 
+### cloud-init-nextclouddb.yml
+
+Installiert automatisch:
+- MariaDB Server
+- Konfiguriert bind-address auf 0.0.0.0
+- Erstellt Datenbank "nextcloud"
+- Erstellt User "nextclouduser" mit Berechtigungen
+- Gibt IP-Adresse aus
+
 ## Vorher-Nachher
 
 **Vorher (Manuell):** ~30-40 Befehle, die man eine nach einer eingeben muss, ca. 20 Minuten pro Instanz
