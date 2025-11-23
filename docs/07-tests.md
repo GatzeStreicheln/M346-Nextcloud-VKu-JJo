@@ -9,7 +9,8 @@ Testperson: Jan Josuran
 **Ergebnis:** ERFOLGREICH - Nextcloud Dashboard wird angezeigt
 **Screenshot:** test-01-webzugriff.png
 
-(../screenshots/test-01-webzugriff.png)
+![Webzugriff](../screenshots/test-01-webzugriff.png)
+
 ## Test 2: Login funktioniert
 **Testziel:** Login-Funktionalität pruefen
 **Durchführung:** Logout durchgefuehrt, dann Login mit admin/admin
