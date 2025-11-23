@@ -8,3 +8,11 @@ package_upgrade: true
 packages:
   - mariadb-server
   - mariadb-client
+  
+write_files:
+  - path: /tmp/setup-db.sql
+    content: |
+      CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+      CREATE USER IF NOT EXISTS 'nextclouduser'@'%' IDENTIFIED BY 'jucbB6MPMWCzth';
+      GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextclouduser'@'%';
+      FLUSH PRIVILEGES;
