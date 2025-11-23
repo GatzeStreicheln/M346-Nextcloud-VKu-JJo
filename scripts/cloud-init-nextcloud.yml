@@ -22,3 +22,32 @@ packages:
   - bzip2
   - mariadb-client
   - wget
+
+  runcmd:
+  - |
+    cat > /etc/apache2/sites-available/nextcloud.conf <<'EOF'
+    <VirtualHost *:80>
+      DocumentRoot /var/www/nextcloud/
+      ServerName nextcloud.local
+      <Directory /var/www/nextcloud/>
+        Require all granted
+        AllowOverride All
+        Options FollowSymLinks MultiViews
+        <IfModule mod_dav.c>
+          Dav off
+        </IfModule>
+      </Directory>
+    </VirtualHost>
+    EOF
+  - a2enmod rewrite headers env dir mime
+  - cd /tmp
+  - wget -q https://download.nextcloud.com/server/releases/nextcloud-32.0.2.tar.bz2
+  - tar xjf nextcloud-32.0.2.tar.bz2
+  - cp -r nextcloud /var/www/
+  - chown -R www-data:www-data /var/www/nextcloud
+  - chmod -R 755 /var/www/nextcloud
+  - a2ensite nextcloud.conf
+  - a2dissite 000-default.conf
+  - systemctl restart apache2
+  - echo "Nextcloud Installation abgeschlossen"
+  - echo "Zugriff über http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)"
