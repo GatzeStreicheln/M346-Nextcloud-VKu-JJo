@@ -3,3 +3,22 @@
 
 package_update: true
 package_upgrade: true
+
+packages:
+  - apache2
+  - libapache2-mod-php
+  - php-gd
+  - php-mysql
+  - php-curl
+  - php-mbstring
+  - php-intl
+  - php-gmp
+  - php-xml
+  - php-imagick
+  - php-zip
+  - php-apcu
+  - php-bcmath
+  - php-common
+  - bzip2
+  - mariadb-client
+  - wget
