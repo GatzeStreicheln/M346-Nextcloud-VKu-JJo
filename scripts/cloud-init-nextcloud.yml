@@ -1,0 +1,5 @@
+#cloud-config
+# Autor: Vasco Kugler
+
+package_update: true
+package_upgrade: true
