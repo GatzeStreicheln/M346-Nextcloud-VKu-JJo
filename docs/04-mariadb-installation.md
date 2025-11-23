@@ -1,6 +1,6 @@
 # MariaDB-Installation auf NextcloudDB
 
-Auf der NextcloudDB-Instanz habe ich MariaDB als Datenbank-Backend fuer Nextcloud installiert.
+Auf der NextcloudDB-Instanz habe ich MariaDB als Datenbank-Backend für Nextcloud installiert.
 
 ## Installation
 sudo apt update && sudo apt upgrade -y
@@ -14,11 +14,11 @@ sudo systemctl status mariadb
 ## MariaDB absichern
 sudo mysql_secure_installation
 
-Dabei wurden folgende Optionen gewaehlt:
-- Root-Passwort gesetzt mit starkem passwort
+Dabei wurden folgende Optionen gewählt:
+- Root-Passwort gesetzt mit starkem Passwort
 - Anonymous User entfernt
 - Remote Root Login deaktiviert
-- Test-Datenbank geloescht
+- Test-Datenbank gelöscht
 - Privilegien neu geladen
 
 ## Datenbank fuer Nextcloud erstellen
@@ -37,4 +37,4 @@ Datenbank-Details:
 - User: nextclouduser
 - Passwort: jucbB6MPMWCzth
 
-MariaDB ist jetzt bereit fuer Nextcloud.
+MariaDB ist jetzt bereit für Nextcloud.
