@@ -31,3 +31,9 @@ runcmd:
   # Datenbank und User erstellen
   - mysql -u root -padmin < /tmp/setup-db.sql
   
+  # IP-Adresse ausgeben
+  - echo "NextcloudDB Installation abgeschlossen"
+  - echo "IP-Adresse dieser Instanz:"
+  - curl -s http://169.254.169.254/latest/meta-data/public-ipv4
+
+final_message: "NextcloudDB ist bereit! Dauer: $UPTIME Sekunden"
