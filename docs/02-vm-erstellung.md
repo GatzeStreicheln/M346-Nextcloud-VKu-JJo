@@ -1,6 +1,6 @@
 # Erstellung der EC2-Instanzen für Nextcloud
 
-Für mein Nextcloud-Projekt habe ich im AWS-Lernlab zwei EC2-Instanzen angelegt. Beide laufen mit Ubuntu 24.04 LTS und sind im gleichen Netz.
+Für unser Nextcloud-Projekt habe ich im AWS-Lernlab zwei EC2-Instanzen angelegt. Beide laufen mit Ubuntu 24.04 LTS und sind im gleichen Netz.
 
 - Instanz 1: nextcloud-server
   - Typ: t3.medium
