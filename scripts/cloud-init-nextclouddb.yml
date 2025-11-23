@@ -1,3 +1,10 @@
 # cloud-config
 # Cloud-Init Skript für NextcloudDB-Instanz
 # Automatische Installation von MariaDB und Datenbank-Setup
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - mariadb-server
+  - mariadb-client
