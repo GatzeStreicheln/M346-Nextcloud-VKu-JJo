@@ -75,8 +75,8 @@ Das Script läuft vollautomatisch durch:
 | Methode | Zeit | Schritte | Fehleranfälligkeit |
 |---------|------|----------|------------------|
 | **Vollständig manuell** | 60-75 Min | EC2 erstellen, SSH, 30+ Befehle tippen | Sehr hoch |
-| **Cloud-Init über Console** | 15-20 Min | EC2 erstellen, YML kopieren, Setup-Wizard | Mittel (YAML-Syntax, Setup) |
-| **Automatisiert mit Script** | 10-15 Min | `./deploy-nextcloud.sh` ausführen | Niedrig (deterministisch, reproducible) |
+| **Cloud-Init über Console** | 15-20 Min | EC2 erstellen, YML kopieren, Setup-Wizard | Mittel |
+| **Automatisiert mit Script** | 10-15 Min | `./deploy-nextcloud.sh` ausführen | Niedrig |
 
 ## Fazit
 
