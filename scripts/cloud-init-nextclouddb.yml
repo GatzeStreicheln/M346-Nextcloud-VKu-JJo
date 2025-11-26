@@ -20,7 +20,7 @@ runcmd:
   - sed -i 's/bind-address.*=.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
   - systemctl restart mariadb
   - systemctl enable mariadb
-  - mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin';"
+  - mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'fhsjfB64d2WCgth';"
   - mysql -u root -padmin < /tmp/setup-db.sql
   - echo "NextcloudDB Installation abgeschlossen"
 

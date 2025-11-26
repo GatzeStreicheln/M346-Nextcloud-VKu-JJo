@@ -9,13 +9,26 @@ set -e
 DB_INSTANCE_TYPE="t3.medium"
 NC_INSTANCE_TYPE="t3.medium"
 AMI_ID="ami-0ecb62995f68bb549"
+KEY_NAME="nextcloud"
 IAM_PROFILE="LabInstanceProfile"
 REGION="us-east-1"
 
 DB_USER="nextclouduser"
 DB_PASSWORD="jucbB6MPMWCzth"
 DB_NAME="nextcloud"
-DB_ROOT_PASSWORD="admin"
+DB_ROOT_PASSWORD="fhsjfB64d2WCgth"
+
+# SSH Key erstellen (falls noch nicht vorhanden)
+echo "Prüfe SSH Key-Pair..."
+if ! aws ec2 describe-key-pairs --key-names $KEY_NAME --region $REGION > /dev/null 2>&1; then
+    echo "Erstelle SSH Key-Pair: $KEY_NAME"
+    mkdir -p ~/.ssh
+    aws ec2 create-key-pair --key-name $KEY_NAME --query 'KeyMaterial' --output text --region $REGION > ~/.ssh/$KEY_NAME.pem
+    chmod 400 ~/.ssh/$KEY_NAME.pem
+    echo "SSH Key gespeichert: ~/.ssh/$KEY_NAME.pem"
+else
+    echo "SSH Key-Pair $KEY_NAME existiert bereits"
+fi
 
 echo "=========================================="
 echo "Nextcloud AWS EC2 Deployment"
@@ -35,6 +48,7 @@ SECGROUP_DB_ID=$(aws ec2 create-security-group \
 aws ec2 authorize-security-group-ingress \
   --group-id $SECGROUP_DB_ID \
   --ip-permissions \
+    IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges='[{CidrIp=0.0.0.0/0}]' \
     IpProtocol=tcp,FromPort=3306,ToPort=3306,IpRanges='[{CidrIp=0.0.0.0/0}]' \
   --region $REGION > /dev/null 2>&1
 
@@ -54,6 +68,7 @@ SECGROUP_NC_ID=$(aws ec2 create-security-group \
 aws ec2 authorize-security-group-ingress \
   --group-id $SECGROUP_NC_ID \
   --ip-permissions \
+    IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges='[{CidrIp=0.0.0.0/0}]' \
     IpProtocol=tcp,FromPort=80,ToPort=80,IpRanges='[{CidrIp=0.0.0.0/0}]' \
     IpProtocol=tcp,FromPort=443,ToPort=443,IpRanges='[{CidrIp=0.0.0.0/0}]' \
   --region $REGION > /dev/null 2>&1
@@ -68,6 +83,7 @@ DB_INSTANCE_ID=$(aws ec2 run-instances \
   --image-id $AMI_ID \
   --count 1 \
   --instance-type $DB_INSTANCE_TYPE \
+  --key-name $KEY_NAME \
   --security-group-ids $SECGROUP_DB_ID \
   --iam-instance-profile Name=$IAM_PROFILE \
   --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=NextcloudDB}]' \
@@ -102,6 +118,7 @@ NC_INSTANCE_ID=$(aws ec2 run-instances \
   --image-id $AMI_ID \
   --count 1 \
   --instance-type $NC_INSTANCE_TYPE \
+  --key-name $KEY_NAME \
   --security-group-ids $SECGROUP_NC_ID \
   --iam-instance-profile Name=$IAM_PROFILE \
   --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Nextcloud}]' \
@@ -140,6 +157,7 @@ echo "  Instance Name: NextcloudDB"
 echo "  Security Group: $SECGROUP_DB_ID"
 echo "  Public IP: $DB_PUBLIC_IP"
 echo "  Private IP: $DB_PRIVATE_IP"
+echo "  SSH: ssh -i ~/.ssh/$KEY_NAME.pem ubuntu@$DB_PUBLIC_IP"
 echo ""
 echo "NEXTCLOUD SERVER:"
 echo "  Instance ID: $NC_INSTANCE_ID"
@@ -147,6 +165,7 @@ echo "  Instance Name: Nextcloud"
 echo "  Security Group: $SECGROUP_NC_ID"
 echo "  Public IP: $NC_PUBLIC_IP"
 echo "  Private IP: $NC_PRIVATE_IP"
+echo "  SSH: ssh -i ~/.ssh/$KEY_NAME.pem ubuntu@$NC_PUBLIC_IP"
 echo ""
 echo "DATENBANK CREDENTIALS:"
 echo "  Host: $DB_PRIVATE_IP:3306"
@@ -170,6 +189,7 @@ Instance Name: NextcloudDB
 Security Group: $SECGROUP_DB_ID
 Public IP: $DB_PUBLIC_IP
 Private IP: $DB_PRIVATE_IP
+SSH: ssh -i ~/.ssh/$KEY_NAME.pem ubuntu@$DB_PUBLIC_IP
 
 NEXTCLOUD
 Instance ID: $NC_INSTANCE_ID
@@ -177,6 +197,7 @@ Instance Name: Nextcloud
 Security Group: $SECGROUP_NC_ID
 Public IP: $NC_PUBLIC_IP
 Private IP: $NC_PRIVATE_IP
+SSH: ssh -i ~/.ssh/$KEY_NAME.pem ubuntu@$NC_PUBLIC_IP
 URL: http://$NC_PUBLIC_IP
 
 DATABASE CREDENTIALS
@@ -185,6 +206,10 @@ User: $DB_USER
 Password: $DB_PASSWORD
 Database: $DB_NAME
 Root Password: $DB_ROOT_PASSWORD
+
+SSH KEY
+Private Key: ~/.ssh/$KEY_NAME.pem
+Public Key Name: $KEY_NAME
 EOF
 
 echo "Informationen gespeichert in: nextcloud-deployment-info.txt"
