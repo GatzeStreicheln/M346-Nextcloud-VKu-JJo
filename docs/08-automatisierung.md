@@ -62,6 +62,7 @@ Das Bash-Script `deploy-nextcloud.sh` kombiniert die Cloud-Init YAML-Dateien mit
 Der Workflow mit dem Script ist dann nur noch:
 
 ```bash
+chmod +x ./deploy-nextcloud.sh
 ./deploy-nextcloud.sh
 ```
 
