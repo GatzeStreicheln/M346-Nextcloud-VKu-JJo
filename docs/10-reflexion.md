@@ -63,6 +63,7 @@ Insgesamt fand ich es ein gelungenes Projekt. Wir haben etwas aufgebaut, das fun
 Das Projekt hat gezeigt, dass wir verstehen wie das alles funktioniert - nicht nur Befehle kopieren, sondern wissen warum es funktioniert.
 
 **Ergäntzungen:**
+
 Während des Projekts haben wir zunächst alles auf einem einzigen Laptop entwickelt. Das hatte aber zur Folge, dass alle Commits von einer Person stammten. Um eine sauberere Zusammenarbeit zu zeigem, haben wir ein neues Git-Repository aufgesetzt, in dem jeder nur das comittet, was er tatsächlich gearbeitet hat.
 
 Ausserdem haben wir unsere Skripte zunächst offline entwickelt und auf einmal hochgeladen, was dazu führte, dass zunächst nur eine einzige grosse Version im Repository war. Daraufhin haben wir die Historie schrittweise wiederhergestellt, indem wir die Änderungen Stück für Stück separat comitten haben. So wurde der Verlauf nachvollziehbar und übersichtlich.
