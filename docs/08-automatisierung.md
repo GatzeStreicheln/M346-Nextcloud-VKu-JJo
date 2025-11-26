@@ -55,7 +55,7 @@ Nach dem Test der Cloud-Init Skripte über AWS Console war der nächste Schritt:
 Das Bash-Script `deploy-nextcloud.sh` kombiniert die Cloud-Init YAML-Dateien mit der AWS CLI:
 
 **SSH Key wird automatisch erstellt** - anschliessen wir der Schlüssel direkt im .ssh ordner abgelegt für sofortigen zugriff nach der Installation
-1. **Security Groups werden automatisch erstellt** - eine für Datenbank (Port 3306), eine für Nextcloud (Port 80/443)
+1. **Security Groups werden automatisch erstellt** - eine für Datenbank (Port 3306,22), eine für Nextcloud (Port 80/443,22)
 2. **Instanzen werden mit `aws ec2 run-instances` gestartet** - mit automatischen Namen (NextcloudDB, Nextcloud) und den Cloud-Init Dateien als User Data
 3. **Private und Public IPs werden abgerufen** - mit `aws ec2 describe-instances` und jq-Queries
 4. **Deployment-Informationen werden gespeichert** - in `nextcloud-deployment-info.txt` inklusive Credentials und Verbindungsdaten mit Port 3306 für die Datenbank
@@ -66,6 +66,7 @@ Der Workflow mit dem Script ist dann nur noch:
 chmod +x ./deploy-nextcloud.sh
 ./deploy-nextcloud.sh
 ```
+In der Ausgabe werden nach beendigung alle nötigen Infos angezeigt wie zb. SSH Zugang, Link zum Nextcloud und Daten für DB-Verbindung
 
 Das Script läuft vollautomatisch durch:
 - Schritt 1-2: Security Groups erstellen und konfigurieren
