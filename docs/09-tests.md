@@ -12,15 +12,15 @@ Zwei YAML-Dateien für die automatisierte Installation wurden erstellt: cloud-in
 
 Nach 2-3 Minuten Wartezeit wurde per SSH auf die Instanz verbunden und der MariaDB Status mit `sudo systemctl status mariadb` geprüft. Das Resultat zeigte MariaDB 10.11.13-MariaDB-0ubuntu0.24.04.1 mit Status active running auf Server ip-172-31-69-78 - MariaDB läuft erfolgreich. In den Logs waren einige Warnings bezüglich "Access denied for user 'root'@'localhost' (using password: NO)" und "FATAL ERROR: Upgrade failed" sichtbar, der Service selbst läuft jedoch stabil mit Status "Taking your SQL requests now...".
 
-![Test](../screenshot/automatisierung-tests-mariadb-status.jpg)
+![Test](../screenshot/automatisierung-tests-mariadb-status.png)
 
 Die Datenbank-Prüfung mit `sudo mysql -u root -padmin -e "SHOW DATABASES;"` ergab, dass die nextcloud Datenbank automatisch erstellt wurde. Weitere vorhandene Datenbanken sind information_schema, mysql, performance_schema und sys.
 
-![Test](../screenshot/automatisierung-tests-datenbanken-list.jpg)
+![Test](../screenshot/automatisierung-tests-datenbanken-list.png)
 
 Die User-Prüfung mit `sudo mysql -u root -padmin -e "SELECT User, Host FROM mysql.user WHERE User='nextclouduser';"` bestätigte, dass der User nextclouduser mit Host % für Remote-Zugriff automatisch angelegt wurde.
 
-![Test](../screenshot/automatisierung-tests-nextcloud-user.jpg)
+![Test](../screenshot/automatisierung-tests-nextcloud-user.png)
 
 Installation und Konfiguration der MariaDB-Instanz waren vollständig automatisiert.
 
@@ -30,11 +30,11 @@ Eine zweite EC2-Instanz mit Namen Nextcloud, Ubuntu 24.04 LTS und Instance Type 
 
 Nach 5-7 Minuten Wartezeit (Nextcloud-Download 260 MB dauert länger) wurde per SSH auf Server ip-172-31-72-123 verbunden. Die Apache Status-Prüfung mit `sudo systemctl status apache2` zeigte active running seit 2025-11-22 19:14:19 UTC mit Main PID 574 (apache2) - Apache läuft erfolgreich. Die Memory-Nutzung beträgt 44.7M und mehrere Worker-Prozesse sind aktiv.
 
-![Test](../screenshot/automatisierung-tests-apache-status.jpg)
+![Test](../screenshot/automatisierung-tests-apache-status.png)
 
 Das Nextcloud-Verzeichnis wurde mit `ls -la /var/www/nextcloud/ | head -20` geprüft. Das Verzeichnis existiert mit allen Dateien wie .htaccess, .user.ini, 3rdparty, apps, config, core, console.php, cron.php, data, dist und index.html. Alle Dateien gehören dem User www-data:www-data mit korrekten Berechtigungen. Nextcloud wurde erfolgreich heruntergeladen und entpackt.
 
-![Test](../screenshot/automatisierung-tests-nextcloud-dateien.jpg)
+![Test](../screenshot/automatisierung-tests-nextcloud-dateien.png)
 
 Die VirtualHost-Konfiguration unter /etc/apache2/sites-available/nextcloud.conf wurde mit `cat /etc/apache2/sites-available/nextcloud.conf` geprüft und zeigt die automatisch korrekt erstellte Konfiguration:
 - VirtualHost auf Port 80
@@ -43,7 +43,7 @@ Die VirtualHost-Konfiguration unter /etc/apache2/sites-available/nextcloud.conf 
 - Directory-Einstellungen mit Require all granted, AllowOverride All und Options FollowSymLinks MultiViews
 - Dav off für mod_dav.c Modul deaktiviert
 
-![Test](../screenshot/automatisierung-tests-virtualhost-config.jpg)
+![Test](../screenshot/automatisierung-tests-virtualhost-config.png)
 
 Apache, PHP und Nextcloud wurden vollständig automatisiert installiert und konfiguriert.
 
@@ -59,11 +59,11 @@ Nach Klick auf "Installation abschließen" dauerte die Installation 1-2 Minuten.
 
 Der Login mit Username admin und Passwort NK67MxmPj7f9L4 führte zum vollständig angezeigten Nextcloud Dashboard. Das Dashboard zeigt die Begrüssung "Guten Abend" sowie das Widget "Empfohlene Dateien" mit bereits vorhandenen Beispieldateien wie Sticky notes.whiteboard, Resume.odt, Invoice.odt, Business model canvas.ods, Business model canvas.whiteboard, Readme.md und Business model canvas.odg.
 
-![Test](../screenshot/automatisierung-tests-nextcloud-dashboard.jpg)
+![Test](../screenshot/automatisierung-tests-nextcloud-dashboard.png)
 
 Die Datenbank-Verbindung wurde von der Nextcloud-Instanz aus getestet mit dem Befehl `mysql -h 172.31.69.78 -u nextclouduser -pjucbB6MPMWCzth nextcloud -e "SELECT COUNT(*) FROM oc_users;"`. Das Resultat zeigte COUNT(*) = 1 - der Admin-User existiert und die Datenbank-Verbindung zwischen den Instanzen funktioniert stabil.
 
-![Test](../screenshot/automatisierung-tests-mysql-remote-connection.png.jpg)
+![Test](../screenshot/automatisierung-tests-mysql-remote-connection.png)
 
 
 ## Zusammenfassung und Fazit
