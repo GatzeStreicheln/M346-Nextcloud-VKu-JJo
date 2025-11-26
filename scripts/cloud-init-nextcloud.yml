@@ -1,9 +1,9 @@
 #cloud-config
+
 # Autor: Vasco Kugler
 
 package_update: true
 package_upgrade: true
-
 packages:
   - apache2
   - libapache2-mod-php
@@ -23,7 +23,7 @@ packages:
   - mariadb-client
   - wget
 
-  runcmd:
+runcmd:
   - |
     cat > /etc/apache2/sites-available/nextcloud.conf <<'EOF'
     <VirtualHost *:80>
@@ -33,10 +33,10 @@ packages:
         Require all granted
         AllowOverride All
         Options FollowSymLinks MultiViews
-        <IfModule mod_dav.c>
-          Dav off
-        </IfModule>
       </Directory>
+      <IfModule mod_dav.c>
+        Dav off
+      </IfModule>
     </VirtualHost>
     EOF
   - a2enmod rewrite headers env dir mime
@@ -50,4 +50,6 @@ packages:
   - a2dissite 000-default.conf
   - systemctl restart apache2
   - echo "Nextcloud Installation abgeschlossen"
-  - echo "Zugriff über http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)"
+  - echo "Zugriff ueber http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)"
+
+final_message: "Nextcloud Webserver ist bereit"

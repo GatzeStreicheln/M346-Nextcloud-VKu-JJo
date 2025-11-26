@@ -1,10 +1,9 @@
-# cloud-config
-# Cloud-Init Skript für NextcloudDB-Instanz
-# Automatische Installation von MariaDB und Datenbank-Setup
+#cloud-config
+
+# Autor: Jan Josuran
 
 package_update: true
 package_upgrade: true
-
 packages:
   - mariadb-server
   - mariadb-client
@@ -18,22 +17,11 @@ write_files:
       FLUSH PRIVILEGES;
 
 runcmd:
-  # MariaDB bind-address auf 0.0.0.0 setzen
   - sed -i 's/bind-address.*=.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
-  
-  # MariaDB neu starten
   - systemctl restart mariadb
   - systemctl enable mariadb
-  
-  # Root-Passwort setzen (ohne Authentifizierung)
   - mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin';"
-  
-  # Datenbank und User erstellen
   - mysql -u root -padmin < /tmp/setup-db.sql
-  
-  # IP-Adresse ausgeben
   - echo "NextcloudDB Installation abgeschlossen"
-  - echo "IP-Adresse dieser Instanz:"
-  - curl -s http://169.254.169.254/latest/meta-data/public-ipv4
 
-final_message: "NextcloudDB ist bereit! Dauer: $UPTIME Sekunden"
+final_message: "NextcloudDB ist bereit"
