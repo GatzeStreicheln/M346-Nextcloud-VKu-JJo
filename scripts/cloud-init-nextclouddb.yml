@@ -21,7 +21,7 @@ runcmd:
   - systemctl restart mariadb
   - systemctl enable mariadb
   - mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'fhsjfB64d2WCgth';"
-  - mysql -u root -padmin < /tmp/setup-db.sql
+  - mysql -u root -pfhsjfB64d2WCgth < /tmp/setup-db.sql
   - echo "NextcloudDB Installation abgeschlossen"
 
 final_message: "NextcloudDB ist bereit"
