@@ -53,6 +53,8 @@ sudo systemctl restart apache2
 ## Installation via Browser
 Installation unter http://44.222.194.210 durchgefuehrt.
 
+![Nextcloud](../screenshot/nextcloud-setup-wizard.png)
+
 Konfiguration im Setup-Wizard:
 - Admin-Username: admin
 - Admin-Passwort: [gesetzt]
@@ -76,3 +78,5 @@ sudo apt install bzip2 -y
 tar xjf nextcloud-32.0.2.tar.bz2
 
 Nach der Installation von bzip2 funktionierte das Entpacken einwandfrei.
+
+![Nextcloud](../screenshot/nextcloud-extract-success.png)

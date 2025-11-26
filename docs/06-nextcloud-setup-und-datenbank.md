@@ -57,4 +57,6 @@ Die Datenbank-Verbindung zur MariaDB-Instanz auf NextcloudDB funktioniert einwan
 
 Nextcloud ist jetzt unter http://44.222.194.210 vollständig funktionsfähig.
 
+![Nextcloud](../screenshot/nextcloud-dashboard-fertig.png)
+
 

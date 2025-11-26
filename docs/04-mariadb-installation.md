@@ -11,6 +11,8 @@ sudo systemctl start mariadb
 sudo systemctl enable mariadb
 sudo systemctl status mariadb
 
+![Nextcloud](../screenshot/mariadb-service-status.png)
+
 ## MariaDB absichern
 sudo mysql_secure_installation
 
@@ -31,6 +33,8 @@ CREATE USER 'nextclouduser'@'%' IDENTIFIED BY 'jucbB6MPMWCzth';
 GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextclouduser'@'%';
 FLUSH PRIVILEGES;
 EXIT;
+
+[Nextcloud](../screenshot/mariadb-database-created.png)
 
 Datenbank-Details:
 - Datenbank: nextcloud

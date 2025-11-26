@@ -17,11 +17,15 @@ Testperson: Jan Josuran
 **Ergebnis:** ERFOLGREICH - Login funktioniert einwandfrei
 **Screenshot:** test-02-login.png
 
+![Webzugriff](../screenshot/test-02-login.png)
+
 ## Test 3: Datei hochladen
 **Testziel:** Datei-Upload und Anzeige in Nextcloud
 **Durchführung:** Testdatei test.txt hochgeladen
 **Ergebnis:** ERFOLGREICH - Datei erscheint in der Dateiliste
 **Screenshot:** test-03-datei-upload.png
+
+![Webzugriff](../screenshot/test-03-datei-upload)
 
 ## Test 4: Datenbank-Verbindung
 **Testziel:** Verbindung zwischen Nextcloud und MariaDB prüfen
@@ -29,17 +33,23 @@ Testperson: Jan Josuran
 **Ergebnis:** ERFOLGREICH - Verbindung funktioniert, Tabellen sichtbar
 **Screenshot:** test-04-datenbank.png
 
+![Webzugriff](../screenshot/test-04-datenbank)
+
 ## Test 5: Apache Webserver Status
 **Testziel:** Apache läuft auf Nextcloud-Instanz
 **Durchführung:** sudo systemctl status apache2
 **Ergebnis:** ERFOLGREICH - apache2 is active (running)
 **Screenshot:** test-05-apache-status.png
 
+![Webzugriff](../screenshot/test-05-apache-status)
+
 ## Test 6: MariaDB Status
 **Testziel:** MariaDB läuft auf NextcloudDB-Instanz
 **Durchführung:** sudo systemctl status mariadb
 **Ergebnis:** ERFOLGREICH - mariadb is active (running)
 **Screenshot:** test-06-mariadb-status.png
+
+![Webzugriff](../screenshot/test-06-mariadb-status)
 
 ## Fazit
 Alle 6 Tests wurden erfolgreich durchgeführt.

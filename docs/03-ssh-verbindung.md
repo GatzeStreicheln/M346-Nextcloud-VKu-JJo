@@ -8,11 +8,14 @@ Nach der Erstellung der zwei neuen EC2-Instanzen habe ich die SSH-Verbindungen e
   - Nextcloud.pem (fuer nextcloud-server)
   - NextcloudDB.pem (fuer nextcloud-database)
 
+  ![SSH](../screenshot/ssh-nextcloud-keys.png)
+
 ## Keydatei-Berechtigungen setzen
 Die Keydateien erforderten die Berechtigung 400 (nur Besitzer lesbar):
 
 chmod 400 ~/.ssh/Nextcloud.pem
 chmod 400 ~/.ssh/NextcloudDB.pem
+
 
 ## SSH-Verbindungen
 Nach der Berechtigungsanpassung funktionieren beide Verbindungen:
@@ -28,6 +31,10 @@ Beide Instanzen sind über SSH mit Ubuntu-User erreichbar.
 - ls / → Dateisystem erreichbar
 
 Verbindungen sind stabil und einsatzbereit.
+
+![SSH](../screenshot/ssh-nextcloud-connected.png)
+
+![SSH](../screenshot/ssh-nextclouddb-connected.png)
 
 ### Probleme und Lösungen
 

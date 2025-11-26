@@ -12,7 +12,7 @@ Für unser Nextcloud-Projekt habe ich im AWS-Lernlab zwei EC2-Instanzen angelegt
   - Ports: 22 (SSH)
   - Wird später zusätzlich für den Datenbank-Port (3306) freigegeben
 
-Die öffentlichen IPs und Security-Gruppenregeln habe ich dokumentiert (siehe Screenshot).
+![SSH](../screenshot/AWS-EC2-Instanzen-Übersicht.png)
 
 ### Probleme und Lösungen
 
