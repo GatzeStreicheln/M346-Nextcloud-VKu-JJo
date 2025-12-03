@@ -23,6 +23,7 @@ sudo mariadb -u root -p
 
 SQL-Befehle:
 DROP USER 'nextclouduser'@'%';
+
 CREATE USER 'nextclouduser'@'%' IDENTIFIED BY 'jucbB6MPMWCzth';
 GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextclouduser'@'%';
 FLUSH PRIVILEGES;
