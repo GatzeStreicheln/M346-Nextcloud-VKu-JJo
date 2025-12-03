@@ -12,8 +12,8 @@ Testperson: Jan Josuran
 ![Webzugriff](../screenshot/test-01-webzugriff.png)
 
 ## Test 2: Login funktioniert
-**Testziel:** Login-Funktionalität pruefen
-**Durchführung:** Logout durchgefuehrt, dann Login mit admin/admin
+**Testziel:** Login-Funktionalität prüfen
+**Durchführung:** Logout durchgeführt, dann Login mit admin/admin
 **Ergebnis:** ERFOLGREICH - Login funktioniert einwandfrei
 **Screenshot:** test-02-login.png
 
@@ -25,7 +25,7 @@ Testperson: Jan Josuran
 **Ergebnis:** ERFOLGREICH - Datei erscheint in der Dateiliste
 **Screenshot:** test-03-datei-upload.png
 
-![Webzugriff](../screenshot/test-03-datei-upload)
+![Webzugriff](../screenshot/test-03-datei-upload.png)
 
 ## Test 4: Datenbank-Verbindung
 **Testziel:** Verbindung zwischen Nextcloud und MariaDB prüfen
@@ -33,7 +33,7 @@ Testperson: Jan Josuran
 **Ergebnis:** ERFOLGREICH - Verbindung funktioniert, Tabellen sichtbar
 **Screenshot:** test-04-datenbank.png
 
-![Webzugriff](../screenshot/test-04-datenbank)
+![Webzugriff](../screenshot/test-04-datenbank.png)
 
 ## Test 5: Apache Webserver Status
 **Testziel:** Apache läuft auf Nextcloud-Instanz
@@ -41,7 +41,7 @@ Testperson: Jan Josuran
 **Ergebnis:** ERFOLGREICH - apache2 is active (running)
 **Screenshot:** test-05-apache-status.png
 
-![Webzugriff](../screenshot/test-05-apache-status)
+![Webzugriff](../screenshot/test-05-apache-status.png)
 
 ## Test 6: MariaDB Status
 **Testziel:** MariaDB läuft auf NextcloudDB-Instanz
@@ -49,7 +49,7 @@ Testperson: Jan Josuran
 **Ergebnis:** ERFOLGREICH - mariadb is active (running)
 **Screenshot:** test-06-mariadb-status.png
 
-![Webzugriff](../screenshot/test-06-mariadb-status)
+![Webzugriff](../screenshot/test-06-mariadb-status.png)
 
 ## Fazit
 Alle 6 Tests wurden erfolgreich durchgeführt.
