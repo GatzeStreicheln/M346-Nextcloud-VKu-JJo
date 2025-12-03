@@ -5,8 +5,8 @@ Nach der Erstellung der zwei neuen EC2-Instanzen habe ich die SSH-Verbindungen e
 ## Vorbereitung
 - Für jede Instanz ein eigenes Keypair in AWS erstellt
 - Keypairs lokal in ~/.ssh/ abgelegt:
-  - Nextcloud.pem (fuer nextcloud-server)
-  - NextcloudDB.pem (fuer nextcloud-database)
+  - Nextcloud.pem (für nextcloud-server)
+  - NextcloudDB.pem (für nextcloud-database)
 
   ![SSH](../screenshot/ssh-nextcloud-keys.png)
 
@@ -25,9 +25,9 @@ ssh -i ~/.ssh/NextcloudDB.pem ubuntu@<oeffentliche-IP-DB>
 
 Beide Instanzen sind über SSH mit Ubuntu-User erreichbar.
 
-## Tests durchgefuehrt
-- whoami → ubuntu (Bestaetigung des Users)
-- uname -a → Ubuntu 22.04 LTS (Betriebssystem bestaetigt)
+## Tests durchgeführt
+- whoami → ubuntu (Bestätigung des Users)
+- uname -a → Ubuntu 22.04 LTS (Betriebssystem bestätigt)
 - ls / → Dateisystem erreichbar
 
 Verbindungen sind stabil und einsatzbereit.
