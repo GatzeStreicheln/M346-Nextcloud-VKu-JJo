@@ -3,13 +3,13 @@
 Auf der NextcloudDB-Instanz habe ich MariaDB als Datenbank-Backend für Nextcloud installiert.
 
 ## Installation
-sudo apt update && sudo apt upgrade -y
-sudo apt install mariadb-server -y
+- sudo apt update && sudo apt upgrade -y
+- sudo apt install mariadb-server -y
 
 ## Service starten und aktivieren
-sudo systemctl start mariadb
-sudo systemctl enable mariadb
-sudo systemctl status mariadb
+- sudo systemctl start mariadb
+- sudo systemctl enable mariadb
+- sudo systemctl status mariadb
 
 ![Nextcloud](../screenshot/mariadb-service-status.png)
 
@@ -23,18 +23,18 @@ Dabei wurden folgende Optionen gewählt:
 - Test-Datenbank gelöscht
 - Privilegien neu geladen
 
-## Datenbank fuer Nextcloud erstellen
+## Datenbank für Nextcloud erstellen
 sudo mariadb -u root -p
 
 Im MariaDB-Prompt:
 
-CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-CREATE USER 'nextclouduser'@'%' IDENTIFIED BY 'jucbB6MPMWCzth';
-GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextclouduser'@'%';
-FLUSH PRIVILEGES;
-EXIT;
+- CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+- CREATE USER 'nextclouduser'@'%' IDENTIFIED BY 'jucbB6MPMWCzth';
+- GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextclouduser'@'%';
+- FLUSH PRIVILEGES;
+- EXIT;
 
-[Nextcloud](../screenshot/mariadb-database-created.png)
+![Nextcloud](../screenshot/mariadb-database-created.png)
 
 Datenbank-Details:
 - Datenbank: nextcloud
