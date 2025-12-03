@@ -45,7 +45,7 @@ Insgesamt fand ich es ein gelungenes Projekt. Wir haben etwas aufgebaut, das fun
 **Was hat gut funktioniert:**
 - Die zwei Instanzen trennen war eine gute Idee
 - Während der Arbeit Screenshots und Notizen machen hat geholfen
-- Zu zweit arbeiten - wenn einer was nicht sieht, sieht's der andere
+- Zu zweit arbeiten wenn einer etwas übersieht, sieht es der andere
 - Fehlersuche Schritt für Schritt machen hat funktioniert
 
 **Was hätte besser sein können:**
