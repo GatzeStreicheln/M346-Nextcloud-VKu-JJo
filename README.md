@@ -10,7 +10,7 @@ Wir haben Nextcloud auf zwei separaten AWS EC2-Instanzen installiert. Eine Insta
 
 Die Installation funktioniert vollautomatisch über Cloud-Init Skripte. Man kann aber auch alles manuell Schritt für Schritt machen, wenn man verstehen will, was gerade passiert.
 
-## Wie man das ganze startet
+## Wie man das Ganze startet
 
 Zuerst brauchst du einen AWS Account. Dann gehst du auf EC2 und erstellst zwei neue Instanzen.
 
